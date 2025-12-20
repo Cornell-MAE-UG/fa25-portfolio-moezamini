@@ -4,6 +4,7 @@ title: Small Wind Turbine Blade Design
 description: Design, fabrication, and experimental validation of a low-Reynolds-number wind turbine blade optimized using a power-weighted Weibull analysis.
 technologies: [Aerodynamics, Blade Element Theory, Fusion 360, Structural Analysis, Wind Tunnel Testing, LabVIEW]
 image: /assets/images/blade/blade_design.jpg
+hero_image: /assets/images/blade/cover.png
 ---
 
 ### Project Overview
@@ -44,9 +45,12 @@ to increase aerodynamic loading near the hub while reducing induced and centrifu
 
 
 ### Testing Procedure
-<img src="{{ '/assets/images/blade/blade_testing.png' | relative_url }}"
-     alt="Wind tunnel testing procedure"
-     class="project-image">
+<figure style="text-align: center; margin: 1.5rem 0;">
+  <img src="{{ '/assets/images/blade/blade_testing.png' | relative_url }}"
+       alt="crash Photo"
+       style="width: 900px; max-width: 100%; height: auto; display: block; margin: 0 auto;">
+</figure>
+
 
 ### Testing Summary
 Performance was validated in the wind tunnel by generating **power curves across wind speeds from approximately 3.4 to 6.5 m/s**. At each wind speed, brake torque was incrementally increased until steady-state operating points were reached, and **RPM, torque, and power** were recorded via LabVIEW. The resulting power–RPM curves consistently exhibited peak power near **1900 RPM** and within the **5.3–6.0 m/s** wind-speed range, closely matching predictions from the Weibull-based design analysis. At the design condition, the rotor achieved a power coefficient corresponding to approximately **34% of the Betz limit**, a strong result for a low-Reynolds-number rotor tested in a wind tunnel.
