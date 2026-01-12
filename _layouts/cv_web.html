@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon/favicon.svg' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="96x96" href="{{ '/assets/favicon/favicon-96x96.png' | relative_url }}">
+  <link rel="shortcut icon" href="{{ '/assets/favicon/favicon.ico' | relative_url }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/favicon/apple-touch-icon.png' | relative_url }}">
+  <link rel="manifest" href="{{ '/assets/favicon/site.webmanifest' | relative_url }}">
+
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = { tex: { inlineMath: [['\\\\(','\\\\)'], ['$', '$']] } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    .cv-web {
+      position: relative;         /* REQUIRED for icon positioning */
+      font-size: 14px;
+      line-height: 1.38;
+      color: #111;
+      margin-top: 24px; 
+    }
+
+/* ===== Download CV (clean, color-only hover) ===== */
+.cv-download{
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 50;
+}
+
+.cv-download a{
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+
+  color: #4A90E2;
+  text-decoration: none;
+
+  transition: color 0.15s ease;
+}
+
+.cv-download i{
+  font-size: 22px;
+  line-height: 1;
+  display: block;
+}
+
+.cv-download span{
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.cv-download a:hover{
+  color: #2F6FB2;
+}
+
+.cv-download a:focus-visible{
+  outline: 2px solid #4A90E2;
+  outline-offset: 2px;
+}
+
+
+    /* Text spacing */
+    .cv-web p { margin: 0 0 6px 0; }
+    .cv-web ul, .cv-web ol { margin: 0 0 8px 18px; padding: 0; }
+    .cv-web li { margin: 0 0 3px 0; }
+    .cv-web br { line-height: 0.7; }
+
+    .cv-web hr {
+      border: none;
+      border-top: 1px solid rgba(0,0,0,.14);
+      margin: 10px 0;
+    }
+
+    /* Headings */
+    .cv-web h1 {
+      font-size: 28px !important;
+      line-height: 1.15 !important;
+      font-weight: 750 !important;
+      margin: 0 0 10px 0 !important;
+      text-align: center;
+    }
+
+    .cv-web h2 {
+      font-size: 17px !important;
+      line-height: 1.2 !important;
+      font-weight: 750 !important;
+      margin: 16px 0 8px 0 !important;
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(0,0,0,.14);
+    }
+
+    .cv-web h3 {
+      font-size: 15px !important;
+      line-height: 1.2 !important;
+      font-weight: 700 !important;
+      margin: 12px 0 6px 0 !important;
+    }
+
+    .cv-web h4 {
+      font-size: 14px !important;
+      line-height: 1.2 !important;
+      font-weight: 700 !important;
+      margin: 10px 0 4px 0 !important;
+    }
+
+    /* Links */
+    .cv-web a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Flex rows */
+    .cv-web .cv-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .cv-web .cv-right { white-space: nowrap; }
+    .cv-web .muted { color: #666; font-weight: 400; }
+
+    /* Print rules */
+    @media print {
+      header, footer, .cv-download { display: none !important; }
+
+      @page { margin: 0.5in; }
+      main.container { max-width: 8.5in !important; }
+
+      .cv-web {
+        font-size: 11.6px;
+        line-height: 1.25;
+      }
+
+      .cv-web h2, .cv-web h3, .cv-web h4 { page-break-after: avoid; }
+      .cv-web ul, .cv-web ol, .cv-web li { page-break-inside: avoid; }
+      .cv-web .cv-row { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark text-white">
+      <div class="container-fluid">
+        <a class="navbar-brand header-title" href="{{ '/' | relative_url }}">
+          <img src="{{ '/assets/favicon/favicon.svg' | relative_url }}" class="header-logo" alt="Logo">
+          {{ site.title }}
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link {% if page.url == '/' %}active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% if page.url == '/projects/' %}active{% endif %}" href="{{ '/projects/' | relative_url }}">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% if page.url == '/cv/' %}active{% endif %}" href="{{ '/cv/' | relative_url }}">CV</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main class="container">
+    <div class="cv-web">
+
+      <!-- PDF icon + label -->
+      <div class="cv-download">
+        <a href="{{ "/assets/Moez-Amini-CV.pdf" | relative_url }}" title="Download PDF">
+          <i class="bi bi-file-earmark-pdf"></i>
+          <span>Download CV</span>
+        </a>
+      </div>
+
+      {{ content }}
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-note">Thanks for visiting my portfolio.</p>
+      <a class="footer-email" href="mailto:ma872@cornell.edu">
+        <i class="bi bi-envelope-fill"></i>
+        <span>ma872@cornell.edu</span>
+      </a>
+      <small class="footer-meta">&copy; 2026 {{ site.name }}</small>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ '/assets/js/carousel.js' | relative_url }}"></script>
+</body>
+</html>

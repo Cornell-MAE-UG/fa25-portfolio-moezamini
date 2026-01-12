@@ -1,58 +1,293 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }}</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
-  <script>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+<!-- Page title -->
+
+<title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+
+
+
+
+<!-- =========================
+
+       Favicons
+
+       ========================= -->
+
+<link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon/favicon.svg' | relative_url }}">
+
+<link rel="icon" type="image/png" sizes="96x96" href="{{ '/assets/favicon/favicon-96x96.png' | relative_url }}">
+
+<link rel="shortcut icon" href="{{ '/assets/favicon/favicon.ico' | relative_url }}">
+
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/favicon/apple-touch-icon.png' | relative_url }}">
+
+<link rel="manifest" href="{{ '/assets/favicon/site.webmanifest' | relative_url }}">
+
+
+
+
+<!-- =========================
+
+       Inter Font (Portfolio Typography)
+
+       ========================= -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+
+href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+
+rel="stylesheet"
+
+>
+
+
+
+
+<!-- =========================
+
+       Styles
+
+       ========================= -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+
+
+
+<!-- =========================
+
+       MathJax
+
+       ========================= -->
+
+<script>
+
     window.MathJax = {
-      tex: { inlineMath: [['\\(','\\)'], ['$', '$']] }
+
+      tex: { inlineMath: [['\\\\(','\\\\)'], ['$', '$']] }
+
     };
-  </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+</script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
 </head>
+
+
+
 
 <body>
 
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark text-white";>
-      <div class="container-fluid">
-        <a class="navbar-brand" href="{{ "/" | relative_url }}">{{ site.title }}</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"> 
-          <span class="navbar-toggler-icon"></span>
-        </button>  
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link {% if page.url == '/' %}active{% endif %}" href="{{ "/" | relative_url }}">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {% if page.url == '/projects/' %}active{% endif %}" href="{{ "/projects/" | relative_url }}">Projects</a>
-            </li> 
-            <li class="nav-item">
-              <a class="nav-link {% if page.url == '/cv/' %}active{% endif %}" href="{{ "/cv/" | relative_url }}">CV</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
-  
-  
-  <main class="container">
+
+
+
+<!-- =========================
+
+       Header
+
+       ========================= -->
+
+<header>
+
+<nav class="navbar navbar-expand-lg navbar-dark text-white">
+
+<div class="container-fluid">
+
+
+
+
+<!-- Brand -->
+
+<a class="navbar-brand header-title" href="{{ '/' | relative_url }}">
+
+<img
+
+src="{{ '/assets/favicon/favicon.svg' | relative_url }}"
+
+alt="Logo"
+
+class="header-logo"
+
+>
+
+          {{ site.title }}
+
+</a>
+
+
+
+
+<!-- Mobile toggle -->
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+
+
+
+<!-- Nav links -->
+
+<div class="collapse navbar-collapse" id="navbarNav">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+
+<a class="nav-link {% if page.url == '/' %}active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
+
+</li>
+
+<li class="nav-item">
+
+<a class="nav-link {% if page.url == '/projects/' %}active{% endif %}" href="{{ '/projects/' | relative_url }}">Projects</a>
+
+</li>
+
+<li class="nav-item">
+
+<a class="nav-link {% if page.url == '/cv/' %}active{% endif %}" href="{{ '/cv/' | relative_url }}">CV</a>
+
+</li>
+
+</ul>
+
+</div>
+
+
+
+
+</div>
+
+</nav>
+
+</header>
+
+
+
+
+<!-- =========================
+
+       Main content
+
+       ========================= -->
+
+<main class="container">
+
     {{ content }}
-  </main>
 
-  <footer class="footer navbar-dark text-white text-center";>
-    <div class="container">
-      &copy; 2024 {{ site.name }}. All rights not reserved.
-    </div>
-  </footer>
+</main>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="{{ '/assets/js/carousel.js' | relative_url }}"></script>
+<script>
+
+  document.addEventListener("DOMContentLoaded", () => {
+
+const toggle = document.querySelector(".news__toggle");
+
+const more = document.querySelector(".news__more");
+
+
+
+
+if (!toggle || !more) return;
+
+
+
+
+    toggle.addEventListener("click", () => {
+
+const expanded = toggle.getAttribute("aria-expanded") === "true";
+
+      toggle.setAttribute("aria-expanded", !expanded);
+
+      more.classList.toggle("is-visible");
+
+
+
+
+      toggle.textContent = expanded ? "Show more ↓" : "Show less ↑";
+
+    });
+
+  });
+
+</script>
+
+
+<!-- =========================
+
+       Footer
+
+       ========================= -->
+
+<footer class="site-footer">
+
+<div class="footer-inner">
+
+<p class="footer-note">Thanks for visiting my portfolio.</p>
+
+
+
+
+<a class="footer-email" href="mailto:ma872@cornell.edu" aria-label="Email Moez Amini">
+
+<i class="bi bi-envelope-fill" aria-hidden="true"></i>
+
+<span>ma872@cornell.edu</span>
+
+</a>
+
+
+
+
+<small class="footer-meta">
+
+      &copy; 2026 {{ site.name }}
+
+</small>
+
+</div>
+
+</footer>
+
+
+
+
+<!-- =========================
+
+       Scripts
+
+       ========================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="{{ '/assets/js/carousel.js' | relative_url }}"></script>
+
+
+
+
 </body>
+
 </html>

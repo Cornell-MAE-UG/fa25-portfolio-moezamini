@@ -1,6 +1,7 @@
 ---
 layout: project
 title: Small Wind Turbine Blade Design
+date: 2025-11-25
 description: Design, fabrication, and experimental validation of a low-Reynolds-number wind turbine blade optimized using a power-weighted Weibull analysis.
 technologies: [Aerodynamics, Blade Element Theory, Fusion 360, Structural Analysis, Wind Tunnel Testing, LabVIEW]
 image: /assets/images/blade/blade_design.jpg
@@ -15,7 +16,6 @@ This project involved the end-to-end design, fabrication, and experimental valid
   <div class="carousel-track">
     <img src="{{ '/assets/images/blade/probab_blade.png' | relative_url }}" alt="Power-weighted Weibull wind-speed distribution" class="carousel-img active">
     <img src="{{ '/assets/images/blade/power_curve.png' | relative_url }}" alt="Measured power curves versus RPM" class="carousel-img">
-    <img src="{{ '/assets/images/blade/cad.png' | relative_url }}" alt="Blade CAD model" class="carousel-img">
   </div>
   <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
 </div>
@@ -42,7 +42,14 @@ $$
 c(r) \propto \left(1 - \frac{r}{R}\right)^{1/2},
 $$
 to increase aerodynamic loading near the hub while reducing induced and centrifugal effects toward the tip. **Blade twist** was prescribed to maintain **near-optimal angles of attack** across the span under combined axial and tangential inflow. Axial induction effects were neglected due to the rotor’s low solidity, yielding a robust geometry suitable for fabrication and testing.
-
+<div class="carousel">
+  <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+  <div class="carousel-track">
+    <img src="{{ '/assets/images/blade/blade_image.png' | relative_url }}" alt="blade_image" class="carousel-img active">
+    <img src="{{ '/assets/images/blade/geometry.png' | relative_url }}" alt="blade geometry" class="carousel-img">
+  </div>
+  <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+</div>
 
 ### Testing Procedure
 <figure style="text-align: center; margin: 1.5rem 0;">
@@ -54,6 +61,11 @@ to increase aerodynamic loading near the hub while reducing induced and centrifu
 
 ### Testing Summary
 Performance was validated in the wind tunnel by generating **power curves across wind speeds from approximately 3.4 to 6.5 m/s**. At each wind speed, brake torque was incrementally increased until steady-state operating points were reached, and **RPM, torque, and power** were recorded via LabVIEW. The resulting power–RPM curves consistently exhibited peak power near **1900 RPM** and within the **5.3–6.0 m/s** wind-speed range, closely matching predictions from the Weibull-based design analysis. At the design condition, the rotor achieved a power coefficient corresponding to approximately **34% of the Betz limit**, a strong result for a low-Reynolds-number rotor tested in a wind tunnel.
+<figure style="text-align: center; margin: 1.5rem 0;">
+  <img src="{{ '/assets/images/blade/power_curve.png' | relative_url }}"
+       alt="crash Photo"
+       style="width: 700px; max-width: 100%; height: auto; display: block; margin: 0 auto;">
+</figure>
 
 ### My Contribution
 I led the **selection and validation of the design operating point** by performing the power-weighted Weibull analysis to identify the wind-speed range most relevant to long-term energy capture. I also developed the **wind-tunnel testing procedure** used by the team to generate power curves. In addition, I contributed to the **aerodynamic blade design**, including selection of the **NACA 4412 airfoil**, and handled **post-processing and analysis of the experimental power-curve data** to evaluate agreement between predicted and measured performance.

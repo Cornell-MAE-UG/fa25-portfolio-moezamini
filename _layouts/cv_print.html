@@ -1,0 +1,164 @@
+---
+layout: null
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ page.title }}</title>
+
+  <!-- Site CSS (keeps your font + general reset if you want it) -->
+  <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+
+  <style>
+    /* ============================
+       CV Redesign (screen + print)
+       ============================ */
+
+    :root{
+      --cv-text: #111;
+      --cv-muted: #666;
+      --cv-rule: rgba(0,0,0,.14);
+      --cv-page: #fff;
+      --cv-bg: #f4f5f7;
+    }
+
+    /* Screen background to make the “page” look nicer */
+    html, body { height: 100%; }
+    body{
+      margin: 0;
+      color: var(--cv-text);
+      background: var(--cv-bg);
+      font-size: 11.8px;
+      line-height: 1.28;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* CV page container */
+    main{
+      width: min(8.5in, 960px);
+      margin: 24px auto;
+      background: var(--cv-page);
+      padding: 0.55in 0.6in;
+      box-shadow: 0 10px 26px rgba(0,0,0,.10);
+      border-radius: 12px;
+    }
+
+    /* Typography hierarchy */
+    main h1{
+      font-size: 22px !important;
+      line-height: 1.12 !important;
+      font-weight: 750 !important;
+      margin: 0 0 8px 0 !important;
+      letter-spacing: 0.2px;
+      text-align: center;
+    }
+
+    /* Sections: subtle rule + tight spacing */
+    main h2{
+      font-size: 13.4px !important;
+      line-height: 1.15 !important;
+      font-weight: 750 !important;
+      margin: 12px 0 6px 0 !important;
+      padding-bottom: 3px;
+      border-bottom: 1px solid var(--cv-rule);
+    }
+
+    main h3{
+      font-size: 12.6px !important;
+      line-height: 1.15 !important;
+      font-weight: 700 !important;
+      margin: 9px 0 4px 0 !important;
+    }
+
+    main h4{
+      font-size: 12px !important;
+      line-height: 1.15 !important;
+      font-weight: 700 !important;
+      margin: 7px 0 3px 0 !important;
+    }
+
+    /* Body text + lists */
+    p{ margin: 0 0 6px 0; }
+    ul, ol{ margin: 0 0 8px 18px; padding: 0; }
+    li{ margin: 0 0 3px 0; }
+
+    hr{
+      border: none;
+      border-top: 1px solid var(--cv-rule);
+      margin: 10px 0;
+    }
+
+    /* Make inline breaks less “tall” */
+    br{ line-height: 0.7; }
+
+    /* Links: keep clean on screen but readable */
+    a{
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* If you want CV links to show as links, uncomment:
+    main a{ text-decoration: underline; text-underline-offset: 2px; }
+    */
+
+    /* ===== Stable row style (use instead of inline flex) ===== */
+    .cv-row{
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      width: 100%;
+      margin: 0 0 4px 0;
+    }
+    .cv-right{ white-space: nowrap; }
+    .muted{ color: var(--cv-muted); font-weight: 400; }
+
+    /* ===== Avoid page breaks inside entries ===== */
+    .avoid-break{
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    /* Keep your existing inline-flex blocks from having too much space */
+    div[style*="display: flex"]{ margin: 0 0 4px 0 !important; }
+
+    /* =================
+       Print settings
+       ================= */
+    @media print{
+      body{
+        background: #fff;
+        font-size: 11.6px;
+        line-height: 1.25;
+      }
+      @page{ margin: 0.5in; }
+
+      main{
+        width: auto;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        border-radius: 0;
+        background: #fff;
+      }
+
+      h2, h3, h4{ page-break-after: avoid; }
+      ul, ol{ page-break-inside: avoid; }
+      li{ page-break-inside: avoid; }
+      .cv-row, .avoid-break, div[style*="display: flex"]{ page-break-inside: avoid; }
+
+      /* Links shouldn’t show blue/purple in print */
+      a{ color: inherit; }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    {{ content }}
+  </main>
+</body>
+</html>
